@@ -5,10 +5,11 @@ import lombok.*;
 
 @Getter
 @Setter
-@ToString
-@EqualsAndHashCode
+@ToString(exclude = {"logo"})
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@RequiredArgsConstructor // generates a constructor with required fields (final fields and @NonNull fields)
+//@AllArgsConstructor because the id is auto generated
 @NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "airlines")
 @Entity // JPA annotation to make this object ready for storage in a JPA-based data store
 public class Airline {
@@ -16,14 +17,24 @@ public class Airline {
     @GeneratedValue(strategy = GenerationType.IDENTITY) //auto increment starts from 1 and increments by 1 (MySQL)
     private Integer id;
     private String airlineCode;
-    @NonNull
+    @NonNull // the column is required
     //to specify the column name , length (and nullable by adding  nullable = false )
     @Column(unique = true, length = 70, name = "airline name")
+    @EqualsAndHashCode.Include // to include this field in the equals and hashcode methods
     private String name;
+    @NonNull
     private String contactInfo;
     private String headquarter;
     @Lob //to store large objects
     private byte[] logo;
     private int fleetSize;
+
+    public Airline( @NonNull String name, @NonNull String contactInfo, String headquarter, byte[] logo, int fleetSize) {
+        this.name = name;
+        this.contactInfo = contactInfo;
+        this.headquarter = headquarter;
+        this.logo = logo;
+        this.fleetSize = fleetSize;
+    }
 
 }

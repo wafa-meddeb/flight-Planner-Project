@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 @ToString
 @EqualsAndHashCode
 @NoArgsConstructor
-@AllArgsConstructor
+//@AllArgsConstructor
 @Entity // JPA annotation to make this object ready for storage in a JPA-based data store
         // the database is a relational one
 public class Aircraft {
@@ -25,4 +25,11 @@ public class Aircraft {
     private int maxPassengerCapacity;
     private int range;
     private BigDecimal fuelCapacity;
+
+    public Aircraft(String model, int maxPassengerCapacity, int range, BigDecimal fuelCapacity) {
+        this.model = model;
+        this.maxPassengerCapacity = maxPassengerCapacity;
+        this.range = range;
+        this.fuelCapacity = fuelCapacity;
+    }
 }

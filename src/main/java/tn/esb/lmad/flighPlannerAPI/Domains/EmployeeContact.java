@@ -18,12 +18,15 @@ public class EmployeeContact {
     private Integer id;
     private String email;
     private String phoneNumber;
-    private String mailingAddresses;
+    private String mailingAddress;
+
+    //specify the relationship between the entity emp and empContact (1 to 1)
+    private Employee employee;
 
     public EmployeeContact(String email, String phoneNumber, String mailingAddresses) {
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.mailingAddresses = mailingAddresses;
+        this.mailingAddress = mailingAddresses;
     }
 
 }

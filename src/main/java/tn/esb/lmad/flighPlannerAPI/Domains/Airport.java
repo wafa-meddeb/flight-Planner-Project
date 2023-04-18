@@ -1,10 +1,10 @@
 package tn.esb.lmad.flighPlannerAPI.Domains;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -22,6 +22,11 @@ public class Airport {
     private String timeZone;
     private int runways;
     private String services;
+    @ManyToMany
+    @JoinTable(name = "airport_flight",
+            joinColumns = @JoinColumn(name = "airport_code"),
+            inverseJoinColumns = @JoinColumn(name = "flight_id"))
+    Set<Flight> flights = new HashSet<>();
 
     public Airport(String name, String location, String timeZone, int runways, String services) {
         this.name = name;

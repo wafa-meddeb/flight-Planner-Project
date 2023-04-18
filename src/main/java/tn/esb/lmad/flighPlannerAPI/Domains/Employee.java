@@ -1,8 +1,5 @@
 package tn.esb.lmad.flighPlannerAPI.Domains;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -21,7 +18,12 @@ public class Employee {
     private String name;
     private String jobTitle;
     private BigDecimal salary;
-
+    //specify the relationship between the entity emp and empContact (1 to 1)
+    //mapped by is used to specify the field in the other entity that is the owner of the relationship(EmployeeContact)
+    //the two sides of the relationship comes from the same relationship
+    @OneToOne(mappedBy = "employee")
+    @JoinColumn(name = "empContact_id")
+    private EmployeeContact employeeContact;
     public Employee(String name, String jobTitle, BigDecimal salary) {
         this.name = name;
         this.jobTitle = jobTitle;

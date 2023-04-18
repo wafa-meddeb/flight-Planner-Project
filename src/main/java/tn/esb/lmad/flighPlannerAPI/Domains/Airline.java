@@ -3,6 +3,9 @@ package tn.esb.lmad.flighPlannerAPI.Domains;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Getter
 @Setter
 @ToString(exclude = {"logo"})
@@ -36,5 +39,10 @@ public class Airline {
         this.logo = logo;
         this.fleetSize = fleetSize;
     }
+
+    //specify the relationship between the entity airline and aircraft (1 to many)
+    @OneToMany(mappedBy = "airline")
+    private Set<Aircraft> aircrafts = new HashSet<>();
+    
 
 }

@@ -1,37 +1,42 @@
 package tn.esb.lmad.flighPlannerAPI.Domains;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
+import tn.esb.lmad.flighPlannerAPI.Enumerations.PaymentMethodType;
+
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Getter
 @Setter
 @ToString
 @EqualsAndHashCode
-@NoArgsConstructor
-//@AllArgsConstructor
+@RequiredArgsConstructor //generates a constructor with required fields (final fields and @NonNull fields)
+//@AllArgsConstructor // Because the id is auto generated, we don't need this annotation
+@Table(name = "bookings")
 @Entity
-
 public class Booking {
+    //primary key
     @Id
+    //auto increment starts from 1 and increments by 1
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    // the foreign key is missing : the flight booked by the passenger
-    private String passengerName;
-    private String passengerContactDetails;
-    private BigDecimal totalPrice;
-    private String paymentMethod;
-    private String billingAddress;
+    private Integer code;
+    private LocalDate bookingDate;
+    private BigDecimal price;
+    @Enumerated(EnumType.STRING)
+    @Column(length = 10,columnDefinition = "varchar(10) default 'CASH'")
+    private PaymentMethodType paymentMethod;
+    @Column(columnDefinition = "boolean default false")
+    private Boolean isPaid;
+    //Specify the relationship between Booking and Passenger (* to 1)
+    @ManyToOne
+    @JoinColumn(name = "passenger_id")
+    private Passenger passenger;
 
-    public Booking(String passengerName, String passengerContactDetails, BigDecimal totalPrice, String paymentMethod, String billingAddress) {
-        this.passengerName = passengerName;
-        this.passengerContactDetails = passengerContactDetails;
-        this.totalPrice = totalPrice;
-        this.paymentMethod = paymentMethod;
-        this.billingAddress = billingAddress;
-    }
+    @ManyToOne
+    @JoinColumn(name = "flight_id")
+    private Flight flight;
+
+
 }

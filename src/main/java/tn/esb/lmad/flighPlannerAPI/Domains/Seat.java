@@ -34,6 +34,10 @@ public class Seat {
     private BigDecimal recline;
     private String entertainmentOptions;
 
+    @ManyToOne
+    @JoinColumn(name = "flight_id")
+    private Flight flight;
+
     public Seat(@NonNull String seatNumbers, @NonNull String seatClass, BigDecimal seatPrice, boolean seatAvailability, BigDecimal seatPitch, BigDecimal recline, String entertainmentOptions) {
         this.seatNumbers = seatNumbers;
         this.seatClass = seatClass;

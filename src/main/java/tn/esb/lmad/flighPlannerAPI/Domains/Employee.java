@@ -24,6 +24,10 @@ public class Employee {
     @OneToOne(mappedBy = "employee")
     @JoinColumn(name = "empContact_id")
     private EmployeeContact employeeContact;
+
+    @ManyToOne
+    @JoinColumn(name = "airline_id")
+    private Airline airline;
     public Employee(String name, String jobTitle, BigDecimal salary) {
         this.name = name;
         this.jobTitle = jobTitle;

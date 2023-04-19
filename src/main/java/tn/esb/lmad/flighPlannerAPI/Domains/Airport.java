@@ -18,21 +18,21 @@ public class Airport {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer airportCode;
     private String name;
-    private String location;
+    private String city;
     private String timeZone;
     private int runways;
-    private String services;
+    private String country;
     @ManyToMany
     @JoinTable(name = "airport_flight",
             joinColumns = @JoinColumn(name = "airport_code"),
             inverseJoinColumns = @JoinColumn(name = "flight_id"))
     Set<Flight> flights = new HashSet<>();
 
-    public Airport(String name, String location, String timeZone, int runways, String services) {
+    public Airport(String name, String location, String timeZone, int runways, String country) {
         this.name = name;
-        this.location = location;
+        this.city = location;
         this.timeZone = timeZone;
         this.runways = runways;
-        this.services = services;
+        this.country = country;
     }
 }

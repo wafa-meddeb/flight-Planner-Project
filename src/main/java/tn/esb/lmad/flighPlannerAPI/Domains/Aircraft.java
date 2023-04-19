@@ -33,4 +33,8 @@ public class Aircraft {
     @ManyToOne
     @JoinColumn(name = "airline_id")
     private Airline airline;
+
+    @ManyToOne
+    @JoinColumn(name = "flight_id")
+    private Flight flight;
 }

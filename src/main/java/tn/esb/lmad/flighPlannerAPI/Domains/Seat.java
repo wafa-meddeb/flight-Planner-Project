@@ -17,15 +17,15 @@ import java.math.BigDecimal;
 public class Seat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     @NonNull
     @Column(name = "seat_number")
     private String seatNumbers;
     @NonNull
     @Column(name = "seat_class", columnDefinition = "varchar(255) default 'Economy'")
     private String seatClass;
-    //@Column(name = "seat_price", precision = 7, scale = 2)
-    @Digits(integer = 7, fraction = 2) //@column is the same as @Digits
+    @Column(name = "seat_price", precision = 7, scale = 2)
+    //@Digits(integer = 7, fraction = 2) //@column is the same as @Digits
     private BigDecimal seatPrice;
     private boolean seatAvailability;
     @Size(min = 25, max = 50)

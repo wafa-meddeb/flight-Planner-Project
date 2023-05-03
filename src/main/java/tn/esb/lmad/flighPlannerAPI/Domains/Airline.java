@@ -41,10 +41,10 @@ public class Airline {
     }
 
     //specify the relationship between the entity airline and aircraft (1 to many)
-    @OneToMany(mappedBy = "airline")
+    @OneToMany(mappedBy = "aircraft_id")
     private Set<Aircraft> aircrafts = new HashSet<>();
 
-    @OneToMany(mappedBy = "airline")
+    @OneToMany(mappedBy = "employee_id")
     private Set<Employee> employees = new HashSet<>();
 
 }

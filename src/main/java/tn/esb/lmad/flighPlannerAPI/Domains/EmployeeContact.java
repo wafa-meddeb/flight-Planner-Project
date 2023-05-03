@@ -1,8 +1,5 @@
 package tn.esb.lmad.flighPlannerAPI.Domains;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Getter
@@ -21,6 +18,7 @@ public class EmployeeContact {
     private String mailingAddress;
 
     //specify the relationship between the entity emp and empContact (1 to 1)
+    @OneToOne
     private Employee employee;
 
     public EmployeeContact(String email, String phoneNumber, String mailingAddresses) {

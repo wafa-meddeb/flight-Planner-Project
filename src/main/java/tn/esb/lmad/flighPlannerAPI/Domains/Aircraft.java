@@ -3,6 +3,7 @@ package tn.esb.lmad.flighPlannerAPI.Domains;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.event.spi.PreInsertEvent;
+import tn.esb.lmad.flighPlannerAPI.Enumerations.AircraftModel;
 
 import java.math.BigDecimal;
 
@@ -16,25 +17,28 @@ import java.math.BigDecimal;
         // the database is a relational one
 public class Aircraft {
     @Id // jpa annotation to specify the primary key of an entity
-    private String id;
+    private String aircraft_id;
     @Enumerated(EnumType.STRING)
-    private String model;
+    private AircraftModel model;
     private int maxPassengerCapacity;
     private int range;
     private BigDecimal fuelCapacity;
 
-    public Aircraft(String model, int maxPassengerCapacity, int range, BigDecimal fuelCapacity) {
+    @ManyToOne
+    @JoinColumn(name = "flight")
+    private Flight flight;
+
+    @ManyToOne
+    @JoinColumn(name = "airline_id")
+    private Airline airline;
+
+
+    public Aircraft(AircraftModel model, int maxPassengerCapacity, int range, BigDecimal fuelCapacity) {
         this.model = model;
         this.maxPassengerCapacity = maxPassengerCapacity;
         this.range = range;
         this.fuelCapacity = fuelCapacity;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "airline_id")
-    private Airline airline;
 
-    @ManyToOne
-    @JoinColumn(name = "flight_id")
-    private Flight flight;
 }

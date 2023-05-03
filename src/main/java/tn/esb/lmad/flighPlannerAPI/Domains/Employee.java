@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer Id;
+    private Integer employee_id;
     private String name;
     private String jobTitle;
     private BigDecimal salary;
@@ -22,7 +22,7 @@ public class Employee {
     //mapped by is used to specify the field in the other entity that is the owner of the relationship(EmployeeContact)
     //the two sides of the relationship comes from the same relationship
     @OneToOne(mappedBy = "employee")
-    @JoinColumn(name = "empContact_id")
+    @JoinColumn(name = "employeeContact_id")
     private EmployeeContact employeeContact;
 
     @ManyToOne

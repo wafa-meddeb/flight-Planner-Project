@@ -12,6 +12,7 @@ import java.util.List;
 @Setter
 @ToString
 @EqualsAndHashCode
+
 @RequiredArgsConstructor //generates a constructor with required fields (final fields and @NonNull fields)
 //@AllArgsConstructor // Because the id is auto generated, we don't need this annotation
 @Table(name = "passenger")
@@ -24,6 +25,7 @@ public class Passenger{
     private String familyName;
     @Email //this annotation will check if the email is valid
     //the string email is introduced like '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}'
+    @EqualsAndHashCode.Include
     private String email;
     @Min(13)
     @Max(18)

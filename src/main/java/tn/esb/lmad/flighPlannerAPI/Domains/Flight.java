@@ -15,7 +15,7 @@ import java.util.Set;
 @EqualsAndHashCode
 @NoArgsConstructor
 //@AllArgsConstructor
-@Table(name = "airlines")
+@Table(name = "flights")
 @Entity
 public class Flight {
     @Id
@@ -24,9 +24,9 @@ public class Flight {
     private Integer flightNum;
     private String name;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime departureTime;
+    private LocalDateTime departureDateTime;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime arrivalTime;
+    private LocalDateTime arrivalDateTime;
     private BigDecimal price;
     private float duration;
     private int distance;
@@ -35,21 +35,21 @@ public class Flight {
     @Column(length = 10,columnDefinition = "varchar(10) default 'SCHEDULED'")
     private FlightStatus status;
     //specify the relationship between the entity flight and airport (many to many)
-    @ManyToMany(mappedBy = "flights")
-    Set<Airport> airports = new HashSet<>();
+    @ManyToMany(mappedBy = "flights")   //airport_id
+    Set<Airport> airports=new HashSet<>();
 
-    @OneToMany(mappedBy = "flights")
+    @OneToMany(mappedBy = "aircraft_id")
     private Set<Aircraft> aircrafts = new HashSet<>();
 
-    @OneToMany(mappedBy = "flights")
+    @OneToMany(mappedBy = "flight")
     private Set<Seat> seats = new HashSet<>();
 
-    @OneToMany(mappedBy = "flights")
+    @OneToMany(mappedBy = "flight")
     private Set<Booking> bookings = new HashSet<>();
 
-    public Flight(LocalDateTime departureTime, LocalDateTime arrivalTime, float duration, int distance, boolean isDirect) {
-        this.departureTime = departureTime;
-        this.arrivalTime = arrivalTime;
+    public Flight(LocalDateTime departureDateTime, LocalDateTime arrivalDateTime, float duration, int distance, boolean isDirect) {
+        this.departureDateTime = departureDateTime;
+        this.arrivalDateTime = arrivalDateTime;
         this.duration = duration;
         this.distance = distance;
         this.isDirect = isDirect;

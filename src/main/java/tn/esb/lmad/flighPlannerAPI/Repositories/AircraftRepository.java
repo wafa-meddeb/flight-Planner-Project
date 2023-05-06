@@ -11,10 +11,10 @@ import tn.esb.lmad.flighPlannerAPI.Domains.Aircraft;
 //the JpaRepository interface provides a lot of methods to perform CRUD operations or more
 // on the entity class.
 //examples of methods provided by the JpaRepository interface:
-//save(), deleteById(), findById(), findAll(), count(), existsById(), ...
-//if we want to get all aircrafts, we will call the findAll() method
+//save(), deleteById(), findById(), getAllAircrafts(), count(), existsById(), ...
+//if we want to get all aircrafts, we will call the getAllAircrafts() method
 //AircraftRepository repository;
-//List<Aircraft> aircrafts = repository.findAll();
+//List<Aircraft> aircrafts = repository.getAllAircrafts();
 // <=> The ORM(Object Relational Mapping) execute SELECT * FROM aircrafts; on the database
 //if we want to get an aircraft by its code, we will call the findById() method
 //if we want to add an aircraft, we will call the save() method

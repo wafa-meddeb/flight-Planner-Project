@@ -30,7 +30,7 @@ public class Passenger{
     @Min(13)
     @Max(18)
     private String phoneNumber;
-    private String Nationality;
+    private String nationality;
     private String passportNumber;
     //Specify the relationship between Booking and Passenger (1 to *)
     @OneToMany(mappedBy = "passenger")

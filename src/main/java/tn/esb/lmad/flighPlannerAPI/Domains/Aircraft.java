@@ -17,7 +17,8 @@ import java.math.BigDecimal;
         // the database is a relational one
 public class Aircraft {
     @Id // jpa annotation to specify the primary key of an entity
-    private String aircraft_id;
+    @EqualsAndHashCode.Include // to include this field in the equals and hashcode methods
+    private String code;
     @Enumerated(EnumType.STRING)
     private AircraftModel model;
     private int maxPassengerCapacity;

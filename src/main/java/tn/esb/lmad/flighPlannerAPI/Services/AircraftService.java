@@ -56,10 +56,10 @@ public class AircraftService {
     public Aircraft addAircraft(Aircraft aircraft){
         if(aircraftRepository.existsById(aircraft.getCode()))
             throw new RuntimeException("Aircraft with code "+aircraft.getCode()+" already exists");
-        return aircraftRepository.save(aircraft);
+        return aircraftRepository.save(aircraft); //save() method returns the Object if it is added to the database
     }
     public Aircraft updateAircraft(String code,Aircraft aircraft){
-        if(!aircraftRepository.existsById(code))
+        if(!aircraftRepository.existsById(code)) //if the aircraft doesn't exist in the database
             throw new RuntimeException("Aircraft with code "+code+" not found");
         aircraft.setCode(code);
         return aircraftRepository.save(aircraft);

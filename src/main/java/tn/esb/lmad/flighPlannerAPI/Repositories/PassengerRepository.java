@@ -6,5 +6,7 @@ import tn.esb.lmad.flighPlannerAPI.Domains.Passenger;
 
 @Repository
 public interface PassengerRepository extends JpaRepository<Passenger, Long> {
+    Passenger findByPassportNumber(String passportNumber);
+    Passenger existsByPassportNumber(String passportNumber);
 }
 

@@ -27,8 +27,7 @@ public class Passenger{
     //the string email is introduced like '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}'
     @EqualsAndHashCode.Include
     private String email;
-    @Min(13)
-    @Max(18)
+    @Column(length = 18)
     private String phoneNumber;
     private String nationality;
     private String passportNumber;

@@ -50,7 +50,7 @@ import java.util.Optional;
 public class AircraftController {
     //the controller will call the service layer
     private final AircraftService aircraftService;
-    @Autowired
+    @Autowired //this annotation is used to inject the dependency (the service layer) to the controller
     public AircraftController(AircraftService aircraftService) {
         this.aircraftService = aircraftService;
     }

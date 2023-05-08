@@ -1,9 +1,7 @@
 package tn.esb.lmad.flighPlannerAPI.Services;
 
 import org.springframework.stereotype.Service;
-import tn.esb.lmad.flighPlannerAPI.Domains.Aircraft;
 import tn.esb.lmad.flighPlannerAPI.Domains.Flight;
-import tn.esb.lmad.flighPlannerAPI.Domains.Passenger;
 import tn.esb.lmad.flighPlannerAPI.Repositories.FlightRepository;
 
 import java.time.LocalDateTime;
@@ -15,8 +13,15 @@ import java.util.List;
 
 @Service
 public class FlightsService {
+
+    private final FlightRepository flightRepository;
+
+    public FlightsService(FlightRepository flightRepository) {
+        this.flightRepository = flightRepository;
+    }
+
     public List<Flight> getFlightByDepartureDateTime(LocalDateTime departureDateTime) {
-        Flight existingFlight = FlightRepository.findByDepartureDateTime(departureDateTime);
+        Flight existingFlight = flightRepository.findByDepartureDateTime(departureDateTime);
         if (existingFlight == null) {
             throw new RuntimeException("flight with departure date and time " + departureDateTime + " does not exist");
         }

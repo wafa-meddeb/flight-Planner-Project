@@ -14,16 +14,14 @@ public class PassengerService {
         this.passengerRepository = passengerRepository;
     }
 
-    public String addPassenger(Passenger passenger) {
+    public Passenger addPassenger(Passenger passenger) {
         // Check if a passenger with the same passport number already exists
         Passenger existingPassenger = passengerRepository.findByPassportNumber(passenger.getPassportNumber());
         if (existingPassenger != null) {
-            return "A user with the same passport number already exists";
+            throw new RuntimeException("Passenger with passport number " + passenger.getPassportNumber() + " already exists");
         }
 
-        // Persist the new passenger if no existing passenger with the same passport number is found
-        passengerRepository.save(passenger);
-        return "user added successfully";
+        return passengerRepository.save(passenger);
     }
 
     public Passenger updatePassenger(String passportNbre, String fieldName, String fieldValue) {

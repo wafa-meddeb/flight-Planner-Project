@@ -33,5 +33,5 @@ public class Passenger{
     private String passportNumber;
     //Specify the relationship between Booking and Passenger (1 to *)
     @OneToMany(mappedBy = "passenger")
-    private List<Booking> bookings;
+    private List<Booking> passengerBookings;
 }

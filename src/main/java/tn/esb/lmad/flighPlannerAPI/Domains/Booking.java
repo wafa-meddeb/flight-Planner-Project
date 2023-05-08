@@ -31,11 +31,11 @@ public class Booking {
     private Boolean isPaid;
     //Specify the relationship between Booking and Passenger (* to 1)
     @ManyToOne
-    @JoinColumn(name = "passenger_id")
+    @JoinColumn(name = "passengerBookings")
     private Passenger passenger;
 
     @ManyToOne
-    @JoinColumn(name = "flight_id")
+    @JoinColumn(name = "bookings")
     private Flight flight;
 
 

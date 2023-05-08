@@ -38,7 +38,7 @@ public class Flight {
     @ManyToMany(mappedBy = "flights")   //airport_id
     Set<Airport> airports=new HashSet<>();
 
-    @OneToMany(mappedBy = "aircraft_id")
+    @OneToMany(mappedBy = "flight")
     private Set<Aircraft> aircrafts = new HashSet<>();
 
     @OneToMany(mappedBy = "flight")

@@ -38,8 +38,9 @@ public class Flight {
     @ManyToMany(mappedBy = "flights")   //airport_id
     Set<Airport> airports=new HashSet<>();
 
-    @OneToMany(mappedBy = "flight")
-    private Set<Aircraft> aircrafts = new HashSet<>();
+    @ManyToOne
+    @JoinColumn(name = "aircraft_code")
+    private Aircraft aircraft;
 
     @OneToMany(mappedBy = "flight")
     private Set<Seat> seats = new HashSet<>();

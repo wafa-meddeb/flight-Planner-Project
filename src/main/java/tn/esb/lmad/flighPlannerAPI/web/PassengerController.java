@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import tn.esb.lmad.flighPlannerAPI.Domains.Passenger;
 import tn.esb.lmad.flighPlannerAPI.Services.PassengerService;
 
-@CrossOrigin(origins = {"http://localhost:8080","http://localhost:5432"})
+@CrossOrigin(origins = {"http://localhost:3000","http://localhost:5432"})
 @RestController
 
 @RequestMapping("/passenger")

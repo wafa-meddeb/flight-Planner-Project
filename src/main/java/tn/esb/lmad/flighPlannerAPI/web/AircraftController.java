@@ -9,7 +9,7 @@ import tn.esb.lmad.flighPlannerAPI.Services.AircraftService;
 
 import java.util.List;
 import java.util.Optional;
-@CrossOrigin(origins = {"http://localhost:8080","http://localhost:5432"})
+@CrossOrigin(origins = {"http://localhost:3000","http://localhost:5432"})
 
 @RestController
 //this class is the boundary of our architecture ECB (Entity Control Boundary)

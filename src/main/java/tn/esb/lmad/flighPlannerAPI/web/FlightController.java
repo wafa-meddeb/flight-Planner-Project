@@ -7,7 +7,7 @@ import tn.esb.lmad.flighPlannerAPI.Services.FlightsService;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@CrossOrigin(origins = {"http://localhost:8080","http://localhost:5432"})
+@CrossOrigin(origins = {"http://localhost:3000","http://localhost:5432"})
 
 @RestController
 

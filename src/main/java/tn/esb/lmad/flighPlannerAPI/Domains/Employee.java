@@ -26,7 +26,7 @@ public class Employee {
     private EmployeeContact employeeContact;
 
     @ManyToOne
-    @JoinColumn(name = "airline_id")
+    @JoinColumn(name = "employees")
     private Airline airline;
     public Employee(String name, String jobTitle, BigDecimal salary) {
         this.name = name;

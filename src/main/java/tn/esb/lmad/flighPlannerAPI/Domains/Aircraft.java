@@ -6,6 +6,8 @@ import org.hibernate.event.spi.PreInsertEvent;
 import tn.esb.lmad.flighPlannerAPI.Enumerations.AircraftModel;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -25,12 +27,12 @@ public class Aircraft {
     private int range;
     private BigDecimal fuelCapacity;
 
-    @ManyToOne
-    @JoinColumn(name = "flight")
-    private Flight flight;
+
+    @OneToMany(mappedBy = "aircraft")
+    private Set<Flight> flights = new HashSet<>();
 
     @ManyToOne
-    @JoinColumn(name = "airline_id")
+    @JoinColumn(name = "aircrafts")
     private Airline airline;
 
 
